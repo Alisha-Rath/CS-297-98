@@ -1,0 +1,222 @@
+<div class="center">
+  <h1>Brief Impact</h1>
+</div>
+
+<h2>Description</h2>
+<p>
+  This deliverable details the experimentation with different parameter-efficient fine-tuning (PEFT) methods applied to DistilBERT for legal case classification. The focus was on comparing fine-tuning techniques like LoRA, DoRA, and QLoRA, exploring various PEFT classes, and implementing explainable AI tools to enhance model interpretability.
+</p>
+
+<h2>Steps Followed</h2>
+
+<h3>Step 1: PEFT Methodology Overview</h3>
+<ul>
+  <li><strong>LoRA (Low-Rank Adaptation):</strong> A technique that introduces low-rank update matrices, reducing the number of trainable parameters and thus enhancing efficiency. LoRA's flexibility allows for tailored model adaptation to domain-specific data.</li>
+  <li><strong>DoRA (Distributed Representation Adaptation):</strong> Similar to LoRA, but distributes the update matrices across layers, potentially enhancing performance when handling complex text representations.</li>
+  <li><strong>QLoRA (Quantized LoRA):</strong> Combines LoRA's parameter efficiency with model quantization to further reduce memory footprint, enabling fine-tuning on larger datasets with minimal computational cost.</li>
+</ul>
+
+<p>Below is an image showing the difference between these fine-tuning techniques</p>
+<img src="loradoraqlora.png" alt="Lora vs Dora vs Qlora" style="width:50%;">
+
+<h3>Step 2: Fine-Tuning Experiments with LoRA, DoRA, and QLoRA</h3>
+<p>Using the PEFT type classes defined above, LoRA, DoRA, and QLoRA were applied across different model components. This experimentation allowed us to observe how each method affected performance, generalization, and computational efficiency.</p>
+
+<h4><p>Below is the image showing the accuracy result of 10 epoch using LoRA:</p></h4>
+<img src="lora.png" alt="Lora" style="width:50%;">
+
+<h4><p>Below is the image showing the accuracy result of 10 epoch using DoRA:</p></h4>
+<img src="dora.png" alt="Dora" style="width:50%;">
+
+<h4><p>Below is the image showing the accuracy result of 10 epoch using QLoRA:</p></h4>
+<img src="qlora.png" alt="QLora" style="width:50%;">
+
+
+<h3>Step 3: Fine-Tuning Experiments with LoRA, DoRA, and QLoRA using updated evaluation metrics</h3>
+<p>To evaluate model performance comprehensively, the following metrics were used:</p>
+
+<ul>
+  <li><strong>Accuracy</strong>: Measures the percentage of correctly classified cases out of the total cases, providing an overall view of the model's performance.</li>
+  
+  <li><strong>Precision</strong>: Indicates how many of the cases predicted as positive (e.g., a specific legal outcome) were actually positive. High precision is essential in legal contexts to avoid false positives.</li>
+  
+  <li><strong>Recall</strong>: Measures the model's ability to identify all relevant cases for a given category, showing how many actual positive cases were correctly predicted. High recall is valuable to minimize false negatives, ensuring critical cases aren't missed.</li>
+  
+  <li><strong>F1 Score</strong>: Provides a harmonic mean of precision and recall, balancing the two to give a single metric that accounts for both false positives and false negatives. It's especially useful in scenarios where an even trade-off between precision and recall is crucial.</li>
+</ul>
+
+<p>These metrics together allowed for a more nuanced evaluation of LoRA, DoRA, and QLoRA, highlighting not only overall accuracy but also the reliability of each model's predictions in terms of specificity and coverage.</p>
+
+
+<h4><p>Below is the image showing the result of 10 epoch using LoRA with the updated evaluation metrics:</p></h4>
+<img src="lora_extra.png" alt="Lora extra" style="width:50%;">
+
+<h4><p>Below is the image showing the result of 10 epoch using DoRA with the updated evaluation metrics:</p></h4>
+<img src="dora_extra.png" alt="Dora extra" style="width:50%;">
+
+<h4><p>Below is the image showing the result of 10 epoch using QLoRA with the updated evaluation metrics:</p></h4>
+<img src="qlora_extra.png" alt="QLora extra" style="width:50%;">
+
+
+<h3>Step 4: Why LoRA Was Best Suited for Legal Case Prediction</h3>
+<p>Through detailed experimentation, LoRA emerged as the most effective PEFT technique for legal case prediction based on the following factors:</p>
+
+<ul>
+  <li><strong>Parameter Efficiency</strong>: LoRA's low-rank matrix updates allow significant parameter reduction while retaining the model's ability to learn case-specific information. This efficiency is particularly beneficial when fine-tuning large models with limited computing resources.</li>
+  
+  <li><strong>Balanced Performance</strong>: LoRA consistently achieved high accuracy and F1 scores compared to DoRA and QLoRA, excelling in both precision and recall. This balance is essential in legal contexts where both false positives and false negatives must be minimized.</li>
+  
+  <li><strong>Computational Efficiency</strong>: LoRA's design enabled faster training times with minimal resource use, making it practical for legal datasets, which can be extensive. In contrast, QLoRA required more extensive quantization adjustments, and DoRA's distributed adaptation led to increased memory usage without significantly higher accuracy.</li>
+  
+  <li><strong>Explainability Integration</strong>: The explainable AI tools (SHAP and LIME) integrated well with LoRA's output, providing interpretable insights into decision-making. LoRA's straightforward adaptation structure made it easier to identify influential factors in verdict predictions, critical for building trust in legal AI systems.</li>
+</ul>
+
+<p>Based on these advantages, LoRA was selected as the primary technique for further fine-tuning and evaluation in legal case classification tasks.</p>
+
+<h3>Step 5: Exploring Different Layers Of Embeddings</h3>
+    <p>
+        In this step, I selected specific layers (0, 2, 4, and 6) in DistilBERT to apply LoRA transformations 
+        using the <code>layers_to_transform</code> parameter. By focusing only on these layers, the model can 
+        achieve a balance of targeted domain adaptation and computational efficiency, as not all layers undergo 
+        fine-tuning.
+    </p>
+
+    <h4>Impact of Configuring <code>layers_to_transform</code></h3>
+    <p>
+        By restricting LoRA transformations to specific layers:
+    </p>
+    <ul>
+        <li>
+            <strong>Performance Decrease:</strong> Accuracy, F1, and other metrics may drop since embedding 
+            adjustments are limited, and the model might miss out on fully capturing nuanced patterns.
+        </li>
+        <li>
+            <strong>Efficiency Gain:</strong> Memory and computational resources are conserved as fewer parameters 
+            are adjusted.
+        </li>
+    </ul>
+    <p>
+        In contrast, the default LoRA setting-without specifying <code>layers_to_transform</code> tends to 
+        produce higher-quality embeddings as all layers undergo adaptation, resulting in a more robust model 
+        output, especially for complex tasks like legal case prediction.
+    </p>
+
+<h4><p>Below is the image showing the result of 10 epoch using LoRA with no extra layers of embeddings:</p></h4>
+<img src="lora.png" alt="Lora extra" style="width:50%;">
+
+
+<h4><p>Below is the image showing the result of 10 epoch using LoRA with extra layers of embeddings:</p></h4>
+<img src="lora_emb.png" alt="Lora extra" style="width:50%;">
+
+<h3>Step 6: Overview of PEFT Task Types</h3>
+<p> Parameter-efficient fine-tuning (PEFT) optimizes large language models (LLMs) for a variety of specific tasks. The following task types benefit from PEFT methodologies:</p>
+
+<ul>
+    <li><strong>Sequence Classification:</strong> This task involves categorizing entire sequences of text into predefined classes. PEFT enhances model efficiency while retaining performance in tasks such as sentiment analysis and topic classification.</li>
+    
+    <li><strong>Token Classification:</strong> Token classification focuses on labeling individual tokens within a sequence. This is commonly used in named entity recognition (NER) and part-of-speech tagging. PEFT ensures that the model is adept at discerning nuances in token-level tasks.</li>
+    
+    <li><strong>Question Answering (QA):</strong> QA tasks require models to provide answers to questions based on context. PEFT optimizes LLMs for understanding context and generating accurate responses.</li>
+    
+    <li><strong>Text Generation:</strong> In this task, models are trained to produce coherent and contextually relevant text based on input prompts. PEFT helps in fine-tuning generative models for improved creative writing and content generation.</li>
+    
+    <li><strong>Text-to-Text Tasks:</strong> These tasks involve converting one piece of text into another, such as summarization, translation, and paraphrasing. PEFT allows models to excel in transforming text while maintaining the original meaning.</li>
+</ul>
+
+<p>After researching all these task types, I found that <strong>sequence classification</strong> is the best suited for our use case, as it effectively aligns with our goals of accurately categorizing legal cases based on predefined classes.</p>
+
+<h3>Step 7: Implementing Explainable AI with LoRA</h3>
+<p><strong>Why Explainable AI (XAI)?</strong> To interpret the model's decision-making process, I integrated XAI tools such as SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-Agnostic Explanations). These tools helped highlight which case details most influenced the model's verdict predictions, enhancing transparency and trustworthiness in legal contexts.</p>
+
+<h4>Steps to Implement SHAP for Explainable AI with LoRA</h4>
+<ul>
+    <li><strong>Install SHAP:</strong> Ensure that the SHAP library is installed in your environment. You can install it via pip:</li>
+    <code>pip install shap</code>
+    
+    <li><strong>Prepare Your Model:</strong> Fine-tune your model with LoRA as previously described, ensuring it is ready for inference.</li>
+
+    <li><strong>Generate Predictions:</strong> Use your fine-tuned model to make predictions on the test dataset.</li>
+
+    <li><strong>Initialize SHAP Explainer:</strong> Create a SHAP explainer instance, passing the model and the input data:</li>
+    <code>explainer = shap.Explainer(model)</code>
+
+    <li><strong>Compute SHAP Values:</strong> Calculate the SHAP values for the predictions:</li>
+    <code>shap_values = explainer(test_data)</code>
+
+    <li><strong>Visualize SHAP Values:</strong> Use SHAP's visualization tools to plot the SHAP values and interpret the results:</li>
+    <code>shap.summary_plot(shap_values, test_data)</code>
+
+    <li><strong>Attention Maps for Visualization:</strong> To further interpret the model, generate attention maps:</li>
+    <ul>
+        <li>Extract attention weights from the model.</li>
+        <li>Visualize the attention maps to see which input features are most relevant to the model's decisions.</li>
+    </ul>
+</ul>
+<h4><p>Below is the image showing the result of integrating ExAI using LoRA:</p></h4>
+<img src="lora_ex.png" alt="Lora ex ai" style="width:50%;">
+
+
+<h2>Code Snippet:</h2>
+<p>1. Code snippet for using multi-faceted evaluation metrics:</p>
+<img src="eval_metrics.png" alt="Evaluation metrics" style="width:50%;">
+
+<p>2. Code snippet for fine-tuning with LoRA:</p>
+<img src="lora_code_1.png" alt="Fine-tuning with PEFT Techniques" style="width:50%;">
+<img src="lora_code_2.png" alt="Fine-tuning with PEFT Techniques" style="width:50%;">
+
+<p>3. Code snippet for fine-tuning with DoRA:</p>
+<img src="dora_code.png" alt="Fine-tuning with PEFT Techniques" style="width:50%;">
+
+<p>4. Code snippet for fine-tuning with QLoRA:</p>
+<img src="qlora_code _1.png" alt="Fine-tuning with PEFT Techniques" style="width:50%;">
+<img src="qlora_code_2.png" alt="Fine-tuning with PEFT Techniques" style="width:50%;">
+
+<p>5. Code snippet for applying embeddings to multi layers with LoRA:</p>
+<img src="lora_code_emb.png" alt="Fine-tuning with PEFT Techniques" style="width:50%;">
+
+<p>6. Code snippet for explainable AI integration:</p>
+<img src="ex_lora.png" alt="Explainable AI with SHAP" style="width:50%;">
+
+<h2>Model Evaluation</h2>
+<p>After experimenting with each PEFT technique, LoRA achieved the highest accuracy, peaking at 68.4%, while DoRA and QLoRA provided computational efficiency gains without significant loss in accuracy. The explainable AI integration revealed that factual accuracy was a primary driver in the model's verdict predictions.</p>
+
+<h2>Insights Gained</h2>
+<p>This experimentation reinforced the value of PEFT techniques in optimizing model performance for domain-specific tasks. Explainable AI provided essential insights into the model's reasoning process, proving invaluable for ensuring fair and transparent legal predictions.</p>
+
+<h2>Next Steps</h2>
+<p>Future work includes experimentation with other models to gain better accuracy.</p>
+
+<h2><p><b>Tutorial Reference:</b></h2> 
+You can find the tutorials I followed for understanding the different types of fine-tuning techniques:
+ <p> <a href="https://www.encora.com/insights/comparing-fine-tuning-optimization-techniques-lora-qlora-dora-and-qdora">Comparing fine-tuning optimization techniques lora qlora dora and qdora</a></p>
+<p> <a href="https://www.youtube.com/watch?v=KEv-F5UkhxU">What is LoRA? Low-Rank Adaptation for finetuning LLMs EXPLAINED</a></p>
+<p> <a href="https://www.youtube.com/watch?v=J2WzLS9TggQ&t=1s">DoRA LLM Fine-tuning explained : Improved LoRA</a></p>
+<p> <a href="https://www.youtube.com/watch?v=t1caDsMzWBk&t=1s">LoRA & QLoRA Fine-tuning Explained In-Depth</a></p>
+
+<h2>Code Reference</h2>
+<p>You can download the complete Jupyter notebook by clicking the link below:</p>
+
+<b><p> LoRA vs DoRA vs QLoRA : with accuracy measures: </p></b>
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_Fine_tuning_with_LoRA.ipynb</a></p>
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System_With_DoRA.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_Fine_tuning_with_DoRA.ipynb</a></p>
+
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System_With_QLoRA.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_Fine_tuning_with_QLoRA.ipynb</a></p>
+
+<b><p> LoRA vs DoRA vs QLoRA : with multiple evaluation metrics: </p></b>
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System_With_LoRA__Diferent_Measuring_Results.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_Fine_tuning_with_LoRA_With_Multiple_eval_metrics.ipynb</a></p>
+
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System_With_DoRA_With_More_Measuring_Results.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_Fine_tuning_with_DoRA_With_Multiple_eval_metrics.ipynb</a></p>
+
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System_With_QLoRA_More_Measuring_Results.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_Fine_tuning_with_QLoRA_With_Multiple_eval_metrics.ipynb</a></p>
+
+<b><p> LoRA with multi layer embedding: </p></b>
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System_With_LoRA__More_embeddings.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_With_LoRA__More_embeddings.ipynb</a></p>
+
+<b><p> LoRA with explainable AI: </p></b>
+<p><a href="CS_297_AI_Powered_Legal_Decision_Support_System_With_LoRA_Explainable_AI.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_With_LoRA_Explainable_AI.ipynb</a></p>
+
+<h2>Presentation Links:</h2>
+<p>Presentation PDF available:</p>
+<p><a href="Different_fine_tuning_models.pdf">Different Fine-Tuning Models - PDF</a></p>
+<p><a href="Explainable_AI_and_LORA.pdf">Explainable AI With LORA - PDF</a></p>
+<p><a href="TaskTypes%20in%20Peft.pdf">TaskTypes In PEFT- PDF</a></p>

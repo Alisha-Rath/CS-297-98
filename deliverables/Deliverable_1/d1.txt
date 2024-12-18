@@ -1,0 +1,63 @@
+<div class="center">
+<h1>Fine-Tuning Insight</h1>
+</div>
+<h2><p><b>Description:</b></p></h2>
+<p>This deliverable focuses on learning and understanding supervised fine-tuning using Large Language Models (LLMs) for AI models, particularly in the context of predicting legal case outcomes. It involved following a detailed tutorial, studying the concepts of supervised learning, and experimenting with a parameter-efficient tuning method called LoRA.</p>
+
+<h2><p><b>Steps Followed:</b></p></h2>
+<p>Here is a detailed breakdown of the steps I took during this phase:</p>
+
+<h3>Step 1: Understanding Supervised Learning</h3>
+<p>To build a foundation, I explored resources on supervised learning, including articles and instructional videos. I focused on the following aspects:</p>
+<ul>
+    <li><strong>Supervised Learning Basics:</strong> Learning how models map input data to labeled outputs using datasets.</li>
+    <li><strong>Applications:</strong> Examples include classification tasks like sentiment analysis and legal decision-making.</li>
+    <li><strong>Challenges:</strong> Understanding the need for large labeled datasets and their impact on training accuracy.</li>
+</ul>
+
+<h3>Step 2: Exploring Fine-Tuning Concepts</h3>
+<p>I delved into fine-tuning, which involves refining a pre-trained model for a specific task. Key insights include:</p>
+<ul>
+    <li><strong>Transfer Learning:</strong> Utilizing a pre-trained model and adjusting it with a task-specific dataset.</li>
+    <li><strong>LoRA Technique:</strong> Parameter-efficient fine-tuning, freezing most layers while training small additional parameters to improve model adaptation.</li>
+</ul>
+
+<h3>Step 3: Hands-On Tutorial - Fine-Tuning with LoRA</h3>
+<p>I followed a tutorial for fine-tuning the DistilBERT model using LoRA, covering the following steps:</p>
+<ul>
+    <li><strong>Environment Setup:</strong> Set up the Python environment using Google Colab and installed required libraries like Hugging Face Transformers and LoRA tools.</li>
+    <li><strong>Model Loading:</strong> Loaded the DistilBERT pre-trained model from Hugging Face.</li>
+    <li><strong>Data Preparation:</strong> Cleaned and tokenized a sentiment analysis dataset.</li>
+    <li><strong>Fine-Tuning:</strong> Configured LoRA to adjust only a subset of model parameters and trained over multiple epochs.</li>
+    <li><strong>Evaluation:</strong> Analyzed model accuracy and fine-tuning impact using a test dataset.</li>
+</ul>
+
+<h2>Code Snippet</h2>
+<p>1. Below is an image showing the code snippet used for fine-tuning using LoRA:</p>
+<img src="train_model.png" alt="Code snippet for fine-tuning distilbert model using LoRA" style="width:50%;">
+
+<p>2. Below is an image showing the code snippet of the accuracy of the model after fine-tuning on the dataset:</p>
+<img src="accuracy_per_epoch.png" alt="Code snippet of the accuracy of the model after fine-tuning on the dataset" style="width:50%;">
+
+<p>3. Below is an image showing the code snippet of the result of the model before training:</p>
+<img src="untrained_model.png" alt="Code snippet of the result of the model before training" style="width:50%;">
+
+<p>4. Below is an image showing the code snippet of the result of the model after training:</p>
+<img src="trained_model.png" alt="Code snippet of the result of the model after training" style="width:50%;">
+
+<h2><p><b>Insights Gained:</b></p></h2>
+<p>This tutorial helped me understand how fine-tuning enhances model accuracy for domain-specific tasks. It also highlighted the advantages of using LoRA for parameter-efficient tuning, making it possible to achieve good results with limited computational resources.</p>
+
+<h2><p><b>Next Steps:</b></p></h2>
+<p>Building on this knowledge, I plan to apply these fine-tuning techniques to my legal decision case prediction model, adjusting parameters based on the characteristics of the legal data and optimizing the model for better predictions.</p>
+
+<h2><p><b>Tutorial Reference:</b></h2> You can find the tutorial I followed for this process <a href="https://www.youtube.com/watch?v=eC6Hd1hFvos&t=545s">Fine-tuning Large Language Models (LLMs) | w/ Example Code</a>.</p>
+
+<h2><p><b>Code Reference:</b></p></h2>
+<p>You can download the complete Jupyter notebook used for this tutorial by clicking the link below:</p>
+<a href="Hugging_Face_Transformers_supervised_fine_tuning_LoRA.ipynb" download>Hugging_Face_Transformers_supervised_fine_tuning_LoRA (.ipynb)</a>
+
+<h2><p><b>Presentation links:</b></p></h2>
+<p>You can see the PDF on the left side of the page too:</p>
+<p><a href="LLM_Overview_and_Usage.pdf">LLM Overview and Usage - PDF</a> </p>
+<p><a href="LoRA (Low-Rank Adaptation) for-Supervised Learning.pdf">LoRA (Low-Rank Adaptation) for Supervised Learning - PDF</a> </p>

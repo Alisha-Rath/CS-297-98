@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>Chris Pollett &gt; Students &gt; Alisha Rath</title>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+
+    <meta name="Authors" content="Christopher Pollett" />
+    <meta name="keywords" content="Alisha Rath" />
+    <style type="text/css">
+    <!--
+        
+.indent {margin-left: 3%}
+.floatRight {float:right;}
+.nobot {line-height: .05in; margin-bottom: .07in}
+.contentColor {background: #FFFFFF; color:#000000}
+.borderColor {background: #99FFCC; color:#000000}
+.borderColor2 {background: #99FF99; color:#000000}
+.grayBackground {background: #EEEEEE;}
+.blackBackground {background:black; color:white;}
+.centerTable {margin-left:20%; margin-right:20%;}
+.italic {font-style: italic}
+.bold {font-weight: bold}
+.underline {text-decoration: underline}
+.tt {font-family: Courier}
+.center {text-align:center}
+.red {color:#FF0000}
+.white {color:#FFFFFF}
+.hideme {display: none}
+
+.whitebox {
+background-color: white;
+border: solid;
+border-color: black;
+border-width: 1px;
+padding: 0.25em;
+}
+
+.beigebox {
+background-color: #EEEEEE;
+border: solid;
+border-color: black;
+border-width: 2px;
+padding: 0.25em;
+}
+
+.h1 {font-size: 16pt; font-weight:bold}
+.h2 {font-size: 14pt; font-weight:bold}
+.h3 {font-size: 12pt; font-weight:bold}
+.h4 {font-size: 10pt; font-weight:bold}
+
+.right {text-align:right}
+.left {text-align:left}
+
+.borderTable, .borderTable th, .borderTable td
+{
+    border: 1px solid black;
+}
+    -->
+    </style>
+</head>
+
+<body class="contentColor" style="margin-left:0cm;
+margin-right: 0cm; margin-top:0cm; margin-bottom:0cm">
+
+<table border="0" cellpadding="0" cellspacing="0" style="height:10in;">
+
+        <col width="25%"/>
+    
+    <col width="75%" />
+    <tr>
+        <td class="borderColor"   valign="top">
+    <p><b><a href="http://www.cs.sjsu.edu/faculty/pollett/" >Chris Pollett</a> &gt;
+    <a href="http://www.cs.sjsu.edu/faculty/pollett/masters/" >Students</a> &gt;<br />
+    Alisha</b><br />
+&#160;&#160;&#160;&#160;( <a href="?Deliverable_3.html?print">Print View</a>)
+            </p>
+        <p>&#160;&#160;&#160;&#160;[<a href="?Bio.php">Bio</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="?Blog.php">Blog</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="?CS297Proposal.html">C297 Proposal</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="LLM_Overview_and_Usage.pdf">LLM Overview and Usage - PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="LoRA (Low-Rank Adaptation) for-Supervised Learning.pdf">LoRA Supervised Learning - PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="Machine_Court_Justice_Presentation.pdf">Paper_Using_DataSet - PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="DistilBERT_FineTuning_LegalCasePrediction.pdf">LLM Base Model1: DistilBERT - PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="Different_fine_tuning_models.pdf">Different Fine-Tuning Models - PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="Explainable_AI_and_LORA.pdf">Explainable AI With LORA - PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="TaskTypes in Peft.pdf">TaskTypes In PEFT- PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="?Deliverable_1.html">Deliverable_1</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="?Deliverable_2.html">Deliverable_2</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="?Deliverable_3.html">Deliverable_3</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="?Deliverable_4.html">Deliverable_4</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="CS297_report.pdf">CS297-report- PDF</a>]</p>
+    <p>&#160;&#160;&#160;&#160;[<a href="?CS298_proposal.html">CS298 Proposal</a>]</p>
+        </td>
+                <td class="contentColor" valign="top">
+            <a id="top" />
+                        <div class="center">
+    <h1>Verdict Train</h1>
+</div>
+
+<h2>Description</h2>
+<p>
+    This deliverable focuses on applying supervised fine-tuning to a pre-trained language model (DistilBERT-uncased) 
+    for classifying legal cases using the previously prepared dataset. The goal was to train the model to predict 
+    the verdict of a case-whether the first party wins or not on the facts of the case.
+</p>
+
+<h2>Steps Followed</h2>
+<p>The following steps outline the process I followed for this deliverable:</p>
+
+<h3>Step 1: Selecting DistilBERT for Fine-Tuning</h3>
+<p><strong>Why DistilBERT?</strong></p>
+<ul>
+    <li>
+        <strong>Lightweight and Efficient:</strong> DistilBERT, a smaller version of BERT, is optimized for lower 
+        computational resources while maintaining 97% of BERT's performance. This makes it ideal for quick experimentation.
+    </li>
+    <li>
+        <strong>Good for NLP Tasks:</strong> DistilBERT excels in text classification and natural language understanding, 
+        making it a suitable choice for processing legal case descriptions.
+    </li>
+    <li>
+        <strong>Transfer Learning Capabilities:</strong> As a pre-trained model, DistilBERT can be fine-tuned on specific 
+        legal datasets, allowing it to adapt quickly to new tasks like verdict prediction.
+    </li>
+</ul>
+
+<h3>Step 2: Using LoRA for Efficient Fine-Tuning</h3>
+<p><strong>Why LoRA (Low-Rank Adaptation)?</strong></p>
+<ul>
+    <li>
+        <strong>Reduces Computational Costs:</strong> LoRA allows for parameter-efficient fine-tuning by freezing 
+        most of the model parameters and introducing low-rank update matrices. This reduces the number of trainable parameters.
+    </li>
+    <li>
+        <strong>Improves Generalization:</strong> LoRA's approach helps avoid overfitting during fine-tuning, especially 
+        when using relatively small datasets like our Supreme Court data.
+    </li>
+    <li>
+        <strong>Flexibility in Model Adaptation:</strong> LoRA's method of updating select parameters allows the model 
+        to adapt to specific features in the legal dataset without modifying the entire network.
+    </li>
+</ul>
+
+<h3>Step 3: Data Preparation and Tokenization</h3>
+<p>
+    The dataset was processed to include case facts and corresponding verdicts as labels (1 for first-party wins and 0 for first-party losses). 
+    The preprocessed data was then split into training, validation, and test sets for effective model evaluation. 
+    <strong>Tokenization</strong> was applied to convert text data into numerical format suitable for the model.
+</p>
+
+<h3>Step 4: Comparing with an Untrained Model</h3>
+<p>
+    An initial evaluation of the pre-trained DistilBERT model was conducted to establish a baseline. This included 
+    measuring accuracy, which helped gauge the model's performance before fine-tuning.
+</p>
+
+<h3>Step 5: Training the Model with LoRA Configurations</h3>
+<p>
+    The model was trained using LoRA configurations to efficiently adapt to the legal case dataset. 
+    The training process included adjusting hyperparameters to optimize performance while monitoring for overfitting.
+</p>
+
+<h3>Step 6: Monitoring Per-Epoch Accuracy and Validation</h3>
+<p>
+    During the training process, the model's accuracy was evaluated at the end of each epoch. 
+    Validation metrics were also recorded to track performance improvements and ensure the model did not overfit to the training data.
+</p>
+
+<h3>Step 7: Predicting Results Using the Trained Model</h3>
+<p>
+    After fine-tuning, predictions were made on the test set to evaluate the model's accuracy in classifying case outcomes 
+    based on the provided facts. This step was crucial in validating the effectiveness of the training process.
+</p>
+
+<h2>Code Snippet: Fine-Tuning Process</h2>
+<p>The following images illustrate key parts of the fine-tuning process:</p>
+<p>1. Below is an image showing the code snippet for loading the pre-trained DistilBERT model</p>
+<img src="load_model.png" alt="Code snippet for loading DistilBERT" style="width:50%;">
+
+<p>2. Below is an image showing the code snippet for training the model with LoRA on the prepared dataset:</p>
+<img src="lora_config.png" alt="Code snippet for training with LoRA" style="width:50%;">
+
+<p>3. Below is an image showing the code snippet for per epoch accuracy and validation loss chart.
+<img src="accuracy_with_lora.png" alt="Code snippet for accuracy with LoRA" style="width:50%;">
+
+<h2>Model Evaluation</h2>
+<p>
+    I used the validation set to monitor the model's performance during training and adjusted hyperparameters like 
+    learning rate and batch size to prevent overfitting.
+</p>
+
+<p>
+    The model's accuracy peaked at approximately 68.23% after the fifth epoch. However, both training and validation loss fluctuated, suggesting potential overfitting. I have implemented the code to return the best model based on validation performance.
+</p>
+
+<h2>Insights Gained</h2>
+<p>
+    This phase allowed me to understand the benefits of combining lightweight models like DistilBERT with parameter-efficient 
+    fine-tuning techniques like LoRA. I learned how to adapt a pre-trained model for specific tasks, overcoming challenges 
+    related to dataset size and domain specificity. Although the improvement in accuracy demonstrated the model's ability to 
+    generalize better to the legal context, the evaluation highlighted the need for ongoing refinement to improve both accuracy and stability.
+</p>
+
+<h2>Next Steps</h2>
+<p>
+    I plan to experiment with various fine-tuning techniques and compare their results to identify the most effective approach for improving the model's performance.
+</p>
+
+<h2>Code Reference</h2>
+<p>You can download the complete Jupyter notebook by clicking the link below:</p>
+<a href="CS_297_AI_Powered_Legal_Decision_Support_System.ipynb" download>CS_297_AI_Powered_Legal_Decision_Support_System_Fine_tuning_with_LoRA.ipynb</a>
+
+
+<h2><p><b>Presentation links:</b></p></h2>
+<p>You can see the PDF on the left side of the page too:</p>
+<p><a href="DistilBERT_FineTuning_LegalCasePrediction.pdf">LLM Base Model1: DistilBERT - PDF</a> </p>                    </td>
+    </tr>
+
+</table>
+</body>
+
+</html>
+

@@ -1,0 +1,78 @@
+<div class="center">
+    <h1>CS298 Proposal</h1>
+    <h1>Title: AI-Powered Legal Decision Support System</h1>
+    <p>Alisha Rath (alisha.rath@sjsu.edu)</p>
+    <p><b>Advisor:</b> Dr. Chris Pollett</p>
+    <p><b>Committee Members:</b> Dr. Robert Chun, Dr. Thomas Austin</p>
+</div>
+
+<h2>Abstract:</h2>
+<p>
+    This project aims to develop an AI-driven legal case prediction system capable of predicting legal case outcomes. By fine-tuning pre-trained large language models (LLMs) such as DistilBERT with specialized datasets, we aim to predict whether the plaintiff or defendant will win the case based on provided facts. The system will integrate parameter-efficient fine-tuning (PEFT) techniques like LoRA, DoRA, and QLoRA to improve model accuracy and computational efficiency. Additionally, explainable AI tools such as SHAP and LIME will be employed to provide transparency in the decision-making process, ensuring the system is both effective and ethically sound for real-world legal applications.
+</p>
+
+<h2>CS297 Results</h2>
+<ul>
+    <li>Laid the foundation for understanding supervised fine-tuning of large language models (LLMs) by conducting an experimental study on a simple classification model using LoRA as the fine-tuning technique.</li>
+    <li>Developed a legal case classification model leveraging a fine-tuned DistilBERT base model and LoRA for fine-tuning. We utilized the Supreme Court Judgment dataset from Kaggle, preprocessed the data, and trained the model to predict legal outcomes, achieving 68.4% accuracy. This dataset was chosen for its focus on case-specific predictions, making it more suitable for our purpose compared to other available legal case prediction datasets.</li>
+    <li>Experimented with various parameter-efficient fine-tuning methods (LoRA, DoRA, QLoRA) to optimize model performance. Using evaluation metrics such as accuracy, F1 score, recall, and precision, we concluded that LoRA outperformed the others due to its ability to fine-tune simple classification models without significant loss of information, ensuring better training efficiency.</li>
+    <li>Integrated explainable AI techniques such as SHAP and attention maps to improve model interpretability. By visualizing attention weights, we were able to understand how the model assigns importance to specific words and phrases in making predictions, providing insights into the underlying reasoning behind its outputs.</li>
+</ul>
+
+<h2>Proposed Schedule</h2>
+
+<table class="border-table">
+    <tr><td> Week 1: Jan 30 - Feb 6</td><td valign="top">Research on different models to make the accuracy of the final result better</td></tr>
+    <tr><td> Week 2-3: Feb 7 - Feb 20</td><td valign="top">Use better ways to fine-tune the model for better results</td></tr>
+    <tr><td> Week 4-5: Feb 21 - Mar 5</td><td valign="top">Develop the user interface for the AI-powered legal prediction software</td></tr>
+    <tr><td> Week 6-7: Mar 9 - Mar 19</td><td valign="top">Experiment with parameter-efficient fine-tuning methods on expanded data</td></tr>
+    <tr><td> Week 7-10: Mar 20 - Apr 09</td><td valign="top">Test the software with real-world legal case data and validate predictions</td></tr>
+    <tr><td> Week 10-12: Apr 10 - Apr 23</td><td valign="top">Begin writing project report, document results, and finalize deliverables</td></tr>
+    <tr><td> Week 13-14: Apr 24 - May 7</td><td valign="top">Work on CS 298 Report and begin preparation for the Defense</td></tr>
+    <tr><td> Week 15: May 7 - May 14</td><td valign="top">Finish CS298 Report and Presentation</td></tr>
+    </table>
+
+<h2>Key Deliverables:</h2>
+<ul>
+    <li>Software
+        <ul>
+            <li>Robust model with better accuracy for predicting cases.</li>
+            <li>AI-powered legal case prediction system with an intuitive user interface</li>
+            <li>Integration of parameter-efficient fine-tuning methods</li>
+            <li>Explainable AI features for model transparency (SHAP, attention maps)</li>
+            <li>Experimentation result of various fine-tuning algorithms and models for legal decision prediction.</li>
+        </ul>
+    </li>
+    <li>Report
+        <ul>
+            <li>CS 298 Report</li>
+            <li>CS 298 Presentation</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Innovations and Challenges</h2>
+<ul>
+    <li>Innovating parameter-efficient fine-tuning techniques for legal case prediction, with experimental results aimed at identifying optimal parameters and training methods to achieve high accuracy in predictions.</li>
+    <li>Integrating advanced machine learning techniques and real-time prediction tools, enabling experimentation with various classification models to identify the best approach for legal case prediction.</li>
+    <li>Ensuring model transparency and explainability for legal professionals by providing clear insights into why the system made a particular prediction. This transparency will help users understand the model's reasoning and potentially provide valuable feedback.</li>
+    <li>Optimizing computational efficiency while maintaining high prediction accuracy. Given resource constraints, the focus is on finding optimal training and testing methods that ensure better accuracy with reduced computational and memory costs.</li>
+    <li>Developing a user-friendly interface for interacting with the prediction system, allowing users to input case files or data and receive predictions based on the provided context. The interface will also leverage explainable AI to clarify the reasoning behind the results.</li>
+    <li>Addressing ethical concerns and potential biases in AI-driven legal decision-making. AI systems may sometimes exhibit bias by focusing on certain words, leading to unexpected or unjust predictions. This raises concerns about the reliability of AI for legal case prediction and its potential impact on people's lives.</li>
+</ul>
+
+
+<h2>References:</h2>
+<p>A. W. Appel, Modern Compiler Implementation in Java, Cambridge University Press, 1998.</p>
+
+<p>R. Hyde, The Art of Assembly Language, No Starch Press, 2004.</p>
+    
+<p>K. C. Louden, Compiler Construction: Principles and Practice, Brooks/Cole, 1997.</p>
+    
+<p>M. L. Scott, Programming Language Pragmatics, Morgan Kaufmann, 2009.</p>
+    
+<p>L. K. Branting et al., "Scalable and explainable legal prediction," Artificial Intelligence and Law, vol. 29, no. 2, pp. 213-238, 2021.</p>
+    
+<p>R. Ejjami, "AI-Driven Justice: Evaluating the Impact of Artificial Intelligence on Legal Systems," International Journal for Multidisciplinary Research, vol. 6, no. 3, 2024.</p>
+    
+<p>G. A. Tsihrintzis et al., "Advances in Artificial Intelligence-Empowered Decision Support Systems," Springer, 2024.</p>
